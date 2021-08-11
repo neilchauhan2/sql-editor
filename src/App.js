@@ -1,8 +1,9 @@
 import "./App.css";
+import Editor from "./components/editor/Editor";
 const App = () => {
   return (
     <div className="App">
-      <h1>Hello world</h1>
+      <Editor />
     </div>
   );
 };
