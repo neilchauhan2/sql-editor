@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import data from "../../data/data.json";
+import SelectQuery from "./SelectQuery";
 import ResultView from "./ResultView";
 
 const Editor = () => {
@@ -8,7 +9,7 @@ const Editor = () => {
   const table = selectedTable.length > 0 ? data[selectedTable] : null;
 
   return (
-    <div className="editor container">
+    <div className="container editor">
       <h1 className="is-size-1">Editor</h1>
       <div className="table-select">
         <label className="label">Select a Table</label>
@@ -20,12 +21,16 @@ const Editor = () => {
             }}
           >
             <option value="is-active">--</option>
-            {tables.map((table) => (
-              <option value={table}>{table}</option>
+            {tables.map((table, idx) => (
+              <option key={idx} value={table}>
+                {table}
+              </option>
             ))}
           </select>
         </div>
       </div>
+      <hr />
+      {table != null && <SelectQuery table={table} />}
       <hr />
       <ResultView table={table} />
     </div>

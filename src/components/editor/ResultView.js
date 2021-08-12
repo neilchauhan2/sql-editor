@@ -1,9 +1,9 @@
 import React from "react";
 
-const ResultView = () => {
+const ResultView = ({ table }) => {
   return (
-    <div className="result-view container">
-      <table class="table is-fullwidth is-striped">
+    <div className="container result-view">
+      <table className="table is-fullwidth is-striped">
         <thead>
           <tr>
             <th>
