@@ -2,8 +2,8 @@ import React from "react";
 
 const ResultView = ({ table }) => {
   return (
-    <div className="container result-view">
-      <table className="table is-fullwidth is-striped">
+    <div className="container mt-4 result-view">
+      <table class="table is-fullwidth is-striped">
         <thead>
           <tr>
             <th>

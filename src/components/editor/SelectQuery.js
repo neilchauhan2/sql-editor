@@ -19,7 +19,6 @@ const SelectQuery = ({ table }) => {
       <h1 className="is-size-1">Select Query</h1>
       <div className="select-field">
         <label className="label">Choose Fields</label>
-        {tableFields[0]}
         <Select
           isMulti
           options={options}
