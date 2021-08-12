@@ -1,8 +1,7 @@
 import React from "react";
-import { useSelectFields } from "../../hooks/useSelectFields";
 import Select from "react-select";
 
-const SelectQuery = ({ table }) => {
+const SelectQuery = ({ table, fields, handleSelectedFields }) => {
   const tableFields = Object.keys(table[0]);
   const options = [
     { value: "all", label: "all" },
@@ -11,8 +10,6 @@ const SelectQuery = ({ table }) => {
       label: field,
     })),
   ];
-
-  const [fields, handleSelectedFields] = useSelectFields();
 
   return (
     <div className="container select-query">

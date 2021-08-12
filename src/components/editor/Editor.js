@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import data from "../../data/data.json";
 import SelectQuery from "./SelectQuery";
 import ResultView from "./ResultView";
+import { useSelectFields } from "../../hooks/useSelectFields";
 
 const Editor = () => {
   const tables = Object.keys(data);
@@ -10,6 +11,7 @@ const Editor = () => {
   const [showResult, setShowResult] = useState(false);
 
   const table = selectedTable.length > 0 ? data[selectedTable] : null;
+  const [fields, handleSelectedFields] = useSelectFields();
 
   const handleToggleResult = () => {
     setShowResult(!showResult);
@@ -60,14 +62,24 @@ const Editor = () => {
       </div>
       {table != null && operation === "select" && (
         <>
-          <SelectQuery table={table} />
+          <SelectQuery
+            table={table}
+            fields={fields}
+            handleSelectedFields={handleSelectedFields}
+          />
           <button className="mt-2 button is-link" onClick={handleToggleResult}>
             Show Result
           </button>
         </>
       )}
 
-      {table != null && showResult === true && <ResultView table={table} />}
+      {table != null && showResult === true && (
+        <ResultView
+          fields={fields}
+          handleSelectedFields={handleSelectedFields}
+          table={table}
+        />
+      )}
     </div>
   );
 };
