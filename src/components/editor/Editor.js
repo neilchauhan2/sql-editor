@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import data from "../../data/data.json";
 import SelectQuery from "./SelectQuery";
 import ResultView from "./ResultView";
@@ -16,6 +16,10 @@ const Editor = () => {
   const handleToggleResult = () => {
     setShowResult(!showResult);
   };
+
+  useEffect(() => {
+    if (fields.length === 0) setShowResult(false);
+  }, [fields]);
 
   return (
     <div className="container editor">
@@ -64,7 +68,6 @@ const Editor = () => {
         <>
           <SelectQuery
             table={table}
-            fields={fields}
             handleSelectedFields={handleSelectedFields}
           />
           <button className="mt-2 button is-link" onClick={handleToggleResult}>
@@ -73,12 +76,8 @@ const Editor = () => {
         </>
       )}
 
-      {table != null && showResult === true && (
-        <ResultView
-          fields={fields}
-          handleSelectedFields={handleSelectedFields}
-          table={table}
-        />
+      {table != null && showResult && (
+        <ResultView fields={fields} table={table} />
       )}
     </div>
   );

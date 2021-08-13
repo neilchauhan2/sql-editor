@@ -1,7 +1,6 @@
 import React from "react";
-import { useSelectFields } from "../../hooks/useSelectFields";
 
-const ResultView = ({ table, fields, handleSelectedFields }) => {
+const ResultView = ({ table, fields }) => {
   console.log(table);
   console.log(fields);
   return (

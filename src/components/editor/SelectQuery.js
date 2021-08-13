@@ -1,10 +1,9 @@
 import React from "react";
 import Select from "react-select";
 
-const SelectQuery = ({ table, fields, handleSelectedFields }) => {
+const SelectQuery = ({ table, handleSelectedFields }) => {
   const tableFields = Object.keys(table[0]);
   const options = [
-    { value: "all", label: "all" },
     ...tableFields.map((field) => ({
       value: field,
       label: field,
