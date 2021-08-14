@@ -4,7 +4,7 @@ const Search = ({ handleSearch, keyword }) => {
   return (
     <div className="container search">
       <div className="field">
-        <p className="control has-icons-left">
+        <p className="control has-icons-right">
           <input
             className="input"
             type="text"
@@ -12,8 +12,8 @@ const Search = ({ handleSearch, keyword }) => {
             value={keyword}
             onChange={handleSearch}
           />
-          <span className="icon is-small is-left">
-            <i className="fas fa-search"></i>
+          <span className="icon is-small is-right">
+            <i className="fas fa-search "></i>
           </span>
         </p>
       </div>
