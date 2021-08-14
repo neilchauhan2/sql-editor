@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select";
 
-const SelectQuery = ({ table, handleSelectedFields }) => {
+const SelectQuery = ({ table, fields, handleSelectedFields }) => {
   const tableFields = Object.keys(table[0]);
   const options = [
     ...tableFields.map((field) => ({
@@ -18,6 +18,7 @@ const SelectQuery = ({ table, handleSelectedFields }) => {
         <Select
           isMulti
           options={options}
+          value={fields}
           className="basic-multi-select"
           classNamePrefix="select"
           onChange={handleSelectedFields}

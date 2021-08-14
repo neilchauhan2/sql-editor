@@ -3,19 +3,27 @@ import data from "../../data/data.json";
 import SelectQuery from "./SelectQuery";
 import ResultView from "./ResultView";
 import { useSelectFields } from "../../hooks/useSelectFields";
+import axios from "axios";
 
 const Editor = () => {
   const tables = Object.keys(data);
   const [selectedTable, setSelectedTable] = useState("");
   const [operation, setOperation] = useState("");
   const [showResult, setShowResult] = useState(false);
-
-  const table = selectedTable.length > 0 ? data[selectedTable] : null;
+  const [table, setTable] = useState([]);
   const [fields, handleSelectedFields] = useSelectFields();
 
   const handleToggleResult = () => {
     setShowResult(!showResult);
   };
+
+  useEffect(() => {
+    if (selectedTable.length > 0) {
+      axios.get(`http://localhost:2000/${selectedTable}`).then((res) => {
+        setTable(res.data);
+      });
+    }
+  }, [selectedTable]);
 
   useEffect(() => {
     if (fields.length === 0) setShowResult(false);
@@ -32,6 +40,7 @@ const Editor = () => {
               <select
                 className="is-capitalized"
                 onChange={(e) => {
+                  handleSelectedFields([]);
                   setSelectedTable(e.target.value);
                 }}
               >
@@ -68,6 +77,7 @@ const Editor = () => {
         <>
           <SelectQuery
             table={table}
+            fields={fields}
             handleSelectedFields={handleSelectedFields}
           />
           <button className="mt-2 button is-link" onClick={handleToggleResult}>
