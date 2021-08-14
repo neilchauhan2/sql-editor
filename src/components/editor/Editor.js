@@ -11,10 +11,25 @@ const Editor = () => {
   const [showResult, setShowResult] = useState(false);
   const [table, setTable] = useState([]);
   const [fields, handleSelectedFields] = useSelectFields();
+  const [keyword, setKeyword] = useState("");
 
   const handleToggleResult = () => {
     setShowResult(!showResult);
   };
+
+  const handleSearch = (e) => {
+    setKeyword(e.target.value);
+  };
+
+  useEffect(() => {
+    if (keyword.length >= 1) {
+      axios
+        .get(`http://localhost:2000/${selectedTable}?q=${keyword}`)
+        .then((res) => {
+          setTable(res.data);
+        });
+    }
+  }, [keyword]);
 
   useEffect(() => {
     if (selectedTable.length > 0) {
@@ -86,7 +101,12 @@ const Editor = () => {
       )}
 
       {table != null && showResult && (
-        <ResultView fields={fields} table={table} />
+        <ResultView
+          fields={fields}
+          table={table}
+          handleSearch={handleSearch}
+          keyword={keyword}
+        />
       )}
     </div>
   );

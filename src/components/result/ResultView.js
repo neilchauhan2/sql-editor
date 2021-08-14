@@ -1,9 +1,11 @@
 import React from "react";
+import Search from "../misc/Search";
 
-const ResultView = ({ table, fields }) => {
+const ResultView = ({ table, fields, handleSearch, keyword }) => {
   return (
     <div className="container mt-4 result-view">
-      <table className="table is-fullwidth is-striped">
+      <Search handleSearch={handleSearch} keyword={keyword} />
+      <table className="table mt-4 is-fullwidth is-striped">
         <thead>
           <tr>
             {fields.map((field, idx) => (
