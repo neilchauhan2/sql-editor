@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import data from "../../data/data.json";
-import SelectQuery from "./SelectQuery";
-import ResultView from "./ResultView";
+import SelectQuery from "../query/SelectQuery";
+import ResultView from "../result/ResultView";
 import { useSelectFields } from "../../hooks/useSelectFields";
 import axios from "axios";
 
 const Editor = () => {
-  const tables = Object.keys(data);
+  const tables = ["customers", "products"];
   const [selectedTable, setSelectedTable] = useState("");
   const [operation, setOperation] = useState("");
   const [showResult, setShowResult] = useState(false);
