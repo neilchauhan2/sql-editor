@@ -44,8 +44,7 @@ const Editor = () => {
   }, [fields]);
 
   return (
-    <div className="container editor">
-      <h1 className="is-size-1">Editor</h1>
+    <div className="container mt-6 editor">
       <div className="columns">
         <div className="column">
           <div className="table-select">

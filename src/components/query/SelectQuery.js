@@ -15,7 +15,7 @@ const SelectQuery = ({ table, fields, handleSelectedFields }) => {
 
   return (
     <div className="container select-query">
-      <h1 className="is-size-1">Select Query</h1>
+      <h2 className="is-size-2">Select Query</h2>
       <div className="select-field">
         <label className="label">Choose Fields</label>
         <Select
