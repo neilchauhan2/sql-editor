@@ -23,17 +23,15 @@ const Editor = () => {
 
   useEffect(() => {
     if (keyword.length >= 1) {
-      axios
-        .get(`http://localhost:2000/${selectedTable}?q=${keyword}`)
-        .then((res) => {
-          setTable(res.data);
-        });
+      axios.get(`/${selectedTable}?q=${keyword}`).then((res) => {
+        setTable(res.data);
+      });
     }
   }, [keyword]);
 
   useEffect(() => {
     if (selectedTable.length > 0) {
-      axios.get(`http://localhost:2000/${selectedTable}`).then((res) => {
+      axios.get(`/${selectedTable}`).then((res) => {
         setTable(res.data);
       });
     }
