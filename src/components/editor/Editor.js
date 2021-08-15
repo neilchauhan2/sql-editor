@@ -27,7 +27,7 @@ const Editor = () => {
         setTable(res.data);
       });
     }
-  }, [keyword]);
+  }, [keyword, selectedTable]);
 
   useEffect(() => {
     if (selectedTable.length > 0) {
